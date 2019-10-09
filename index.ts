@@ -12,6 +12,22 @@ const REFRESH_SUFFIX = '_refresh';
 const SAVE_SUFFIX = '_save'; // get a dump
 const FINISH_SUFFIX = "_finish"; // this normally means the page reach the end
 
+export interface IAction<P> {
+  type: string,
+  types: {
+    loading: string
+    success: string
+    error: string
+    clear: string
+    refresh: string
+    save: string
+    finish: string
+  },
+  payload: P,
+  stateKey?: string,
+  meta?: any,
+}
+
 export function createBasicTypes<T>(prefix: string, types: T): B<T> {
   const res = {} as any;
   Object.keys(types).forEach(property => {
